@@ -1,0 +1,13 @@
+<launch>
+  <!-- Gazebo'yu boş bir dünya ile başlatıyoruz -->
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch"/>
+  <!-- Turtlebot hareket node'u -->
+  <node pkg="zeynepsena_sahin" type="hareket.py" name="hareket" output="screen"/>
+
+  <!-- Pose bilgilerini dinleyip yol hesaplayan node -->
+  <node pkg="zeynepsena_sahin" type="yol.py" name="yol" output="screen"/>
+
+  <!-- Konya'nın sıcaklığını çeken hava node'u -->
+  <node pkg="zeynepsena_sahin" type="hava.py" name="hava" output="screen"/>
+</launch>
+
