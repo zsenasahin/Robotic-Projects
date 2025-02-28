@@ -1,0 +1,8 @@
+
+
+<launch>
+<node name="akif" pkg="turtlesim" type="turtlesim_node" />
+<node name="durdu" pkg="turtlesim" type="turtlesim_teleop_key" />
+</launch>
+
+
