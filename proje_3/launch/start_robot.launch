@@ -1,0 +1,26 @@
+<launch>
+    <!-- TurtleBot3 World Launch -->
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch" />
+
+    <!-- SLAM Gmapping Launch -->
+    <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+        <arg name="slam_methods" value="gmapping" />
+    </include>
+
+    <!-- İlk Node: En Yakın Duvara Git -->
+    <node pkg="final_odevi" type="robot_control.py" name="robot_control" output="screen">
+        <param name="use_sim_time" value="true" />
+    </node>
+
+    <!-- Bekleme Süresi (Otomatik Gecikme) -->
+    <node pkg="roslaunch" type="pause.py" name="pause_1" output="screen">
+        <param name="duration" value="5" /> <!-- 5 saniye bekler -->
+    </node>
+
+    <!-- İkinci Node: Duvarları Dolaş -->
+    <node pkg="final_odevi" type="robot_control2.py" name="robot_control2" output="screen">
+        <param name="use_sim_time" value="true" />
+    </node>
+
+</launch>
+
